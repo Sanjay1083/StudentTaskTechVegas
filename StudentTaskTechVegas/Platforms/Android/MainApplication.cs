@@ -11,7 +11,7 @@ namespace StudentTaskTechVegas
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)
             : base(handle, ownership)
         {
-            EntryHandler.Mapper.AppendToMapping("CustomEntryHandler", (handler, view) =>
+            EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
             {
                 // Custom mapping for Entry if needed
                  handler.PlatformView.BackgroundTintList=ColorStateList.ValueOf(Android.Graphics.Color.Transparent);

@@ -28,32 +28,46 @@
                    HorizontalOptions="Start" />
 
             <BoxView HeightRequest="2" WidthRequest="100" Color="#00BFFF" HorizontalOptions="Start" />
-
             <Frame BackgroundColor="White" CornerRadius="20" Padding="20" Margin="0,20,0,0" HasShadow="True">
                 <VerticalStackLayout Spacing="20">
+
                     <Label Text="Phone Number:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
-                    <Entry Placeholder="Enter Phone Number"
-                           Keyboard="Telephone" TextColor="Black"
-                           Text="{Binding PhoneNumber}"
-                           BackgroundColor="#f2f2f2"
-                           HeightRequest="50"
-                       />
+
+                    <Border Stroke="Gray"
+            StrokeThickness="1"
+            BackgroundColor="White"
+            Padding="8,0"
+            StrokeShape="RoundRectangle 10">
+                        <Entry Placeholder="Enter Phone Number"
+               Keyboard="Telephone"
+               Text="{Binding PhoneNumber}"
+               BackgroundColor="Transparent"
+               TextColor="Black"
+               />
+                    </Border>
 
                     <Label Text="Password:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
-                    <Entry Placeholder="************"
-                           IsPassword="True" TextColor="Black"
-                           Text="{Binding Password}"
-                           BackgroundColor="#f2f2f2"
-                           HeightRequest="50"
-                          />
+
+                    <Border Stroke="Gray"
+            StrokeThickness="1"
+            BackgroundColor="White"
+            Padding="8,0"
+            StrokeShape="RoundRectangle 10">
+                        <Entry Placeholder="************"
+               IsPassword="True"
+               Text="{Binding Password}"
+               BackgroundColor="Transparent"
+               TextColor="Black"
+              />
+                    </Border>
 
                     <Button Text="Sign In"
-                            Command="{Binding LoginCommand}"
-                            BackgroundColor="#403C99"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            HeightRequest="50"/>
+            Command="{Binding LoginCommand}"
+            BackgroundColor="#403C99"
+            TextColor="White"
+            FontAttributes="Bold"
+            CornerRadius="10"
+            HeightRequest="50"/>
                 </VerticalStackLayout>
             </Frame>
 
