@@ -16,7 +16,6 @@ public partial class AcademicPage : ContentPage
             BindingContext = _student;
         }
     }
-
     public AcademicPage()
     {
         InitializeComponent();

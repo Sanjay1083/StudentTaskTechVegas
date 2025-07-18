@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using StudentTaskTechVegas.ApiServices.Interface;
@@ -14,39 +13,45 @@ namespace StudentTaskTechVegas.ViewModels
         private readonly IProfileService _profileService;
 
         [ObservableProperty]
-        ObservableCollection<StudentModel> students;
+        private ObservableCollection<StudentModel> students = new();
 
         [ObservableProperty]
-        bool isBusy;
+        private bool isBusy;
 
         [ObservableProperty]
         private string? parentName;
 
         [ObservableProperty]
         private string? parentPhoneNumber;
+
         [ObservableProperty]
-        private string? parentimage;
+        private string? parentImage;
 
         public HomePageViewModel(IStudentService studentService, IProfileService profileService)
         {
             _studentService = studentService;
             _profileService = profileService;
-            Students = new ObservableCollection<StudentModel>();
-            _=LoadStudentsAsync();
-            LoadParentDetailsAsync();
-            
+
+            // Start loading data
+            LoadDataAsync();
         }
+
+        private async void LoadDataAsync()
+        {
+            await LoadStudentsAsync();
+            await LoadParentDetailsAsync();
+        }
+
         [RelayCommand]
-        async Task NavigateToAcademic(StudentModel student)
+        private async Task NavigateToAcademic(StudentModel student)
         {
             if (student == null) return;
 
             await Shell.Current.GoToAsync(nameof(AcademicPage), new Dictionary<string, object>
-                {
-                    { "Student", student }
-                });
+            {
+                { "Student", student }
+            });
         }
-       
 
         public async Task LoadStudentsAsync()
         {
@@ -59,31 +64,35 @@ namespace StudentTaskTechVegas.ViewModels
                 var token = await SecureStorage.GetAsync("Token");
                 var parentIdString = await SecureStorage.GetAsync("ParentId");
 
-                if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(parentIdString))
-                    return;
+                if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(parentIdString)) return;
 
-                if (!int.TryParse(parentIdString, out int parentId))
-                    return;
+                if (!int.TryParse(parentIdString, out int parentId)) return;
 
                 var result = await _studentService.GetStudentsAsync(token, parentId);
 
                 Students.Clear();
+
                 if (result != null)
                 {
                     foreach (var student in result)
                     {
                         Students.Add(new StudentModel
                         {
-                            SectionName = student.SectionName,
                             StudentId = student.StudentId,
-                            AcademicYear = student.AcademicYear,
+                            Name = student.Name,
                             AdmissionNo = student.AdmissionNo,
                             ClassName = student.ClassName,
-                            Name = student.Name,
+                            SectionName = student.SectionName,
+                            AcademicYear = student.AcademicYear,
                             Image = $"https://testapi.techvegas.in/StudentImages/{student.Image}"
                         });
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                // log error or show message
+                Console.WriteLine("Error loading students: " + ex.Message);
             }
             finally
             {
@@ -91,26 +100,29 @@ namespace StudentTaskTechVegas.ViewModels
             }
         }
 
-        private async void LoadParentDetailsAsync()
+        private async Task LoadParentDetailsAsync()
         {
-            var token = await SecureStorage.GetAsync("Token");
-            var parentId = await SecureStorage.GetAsync("ParentId");
-
-            if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(parentId))
+            try
             {
-              var  ProfileNAmes = await _profileService.GetProfileAsync(token, parentId);
+                var token = await SecureStorage.GetAsync("Token");
+                var parentId = await SecureStorage.GetAsync("ParentId");
 
-                if (ProfileNAmes != null)
+                if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(parentId))
                 {
+                    var profile = await _profileService.GetProfileAsync(token, parentId);
 
-                    ParentName = ProfileNAmes?.MName;
-                    ParentPhoneNumber = ProfileNAmes.MPhoneNumber;
-
+                    if (profile != null)
+                    {
+                        ParentName = profile.MName;
+                        ParentPhoneNumber = profile.MPhoneNumber;
+                        //ParentImage = $"https://testapi.techvegas.in/ParentImages/{profile.Image}";
+                    }
                 }
-
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading parent profile: " + ex.Message);
             }
         }
     }
-
 }

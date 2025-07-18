@@ -20,7 +20,7 @@ namespace StudentTaskTechVegas
 
             if (!string.IsNullOrEmpty(token))
             {
-                return serviceProvider.GetRequiredService<HomePage>();
+                return new AppShell();
             }
             else
             {
