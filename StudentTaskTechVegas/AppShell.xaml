@@ -4,11 +4,52 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StudentTaskTechVegas"
+    xmlns:views="clr-namespace:StudentTaskTechVegas.Views"
+    Shell.TabBarBackgroundColor="#4A46AA"
+    Shell.TabBarUnselectedColor="Black"
+    Shell.TabBarTitleColor="White"
+     Shell.TabBarForegroundColor="White"
+    Shell.NavBarIsVisible="False"
+    Shell.BackgroundColor="#4A46AA"
+    Shell.FlyoutBehavior="Disabled"
     Title="StudentTaskTechVegas">
+    <!--<ShellContent--> 
+   
+    <!--Route="LoginPage"
+    ContentTemplate="{DataTemplate views:LoginPage}" />-->
 
+    <TabBar Shell.NavBarIsVisible="False">
+        <!-- Home Tab -->
+        <ShellContent 
+            Title="Home"
+            Icon="homeicon.png"
+            Route="HomePage"
+            ContentTemplate="{DataTemplate views:HomePage}" />
+
+        <!-- Attendance Tab -->
+        <ShellContent 
+            Title="News"
+            Icon="newicon.png"
+            Route="NewsPage"
+            ContentTemplate="{DataTemplate views:NewsPage}" />
+
+        <ShellContent 
+     Title="FeedBack"
+     Icon="feedbackicon.png"
+     Route="FeedBackPage"
+     ContentTemplate="{DataTemplate views:FeedBackPage}" />
+
+        <!-- Profile Tab -->
+        <ShellContent 
+            Title="Profile"
+            Icon="profileicon.png"
+            Route="ProfilePage"
+            ContentTemplate="{DataTemplate views:ProfilePage}" />
+       
+    </TabBar>
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    Title="Academic" 
+    ContentTemplate="{DataTemplate views:AcademicPage}"
+    Route="AcademicPage" />
 
 </Shell>

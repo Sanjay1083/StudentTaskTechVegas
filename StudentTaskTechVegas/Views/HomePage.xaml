@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:StudentTaskTechVegas.ViewModels"
+    xmlns:models="clr-namespace:StudentTaskTechVegas.Models"
+    x:Class="StudentTaskTechVegas.Views.HomePage"
+    x:Name="HomePageRoot"
+
+    x:DataType="viewmodel:HomePageViewModel"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" BackgroundColor="#4A46AA">
+
+            <!-- Header Section -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="20" Padding="16">
+                <Label Text="My Kids" FontSize="32" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                <HorizontalStackLayout Spacing="16">
+                    <Image Source="defaultimage.png" WidthRequest="80" HeightRequest="80" BackgroundColor="White" VerticalOptions="Center" />
+                    <VerticalStackLayout VerticalOptions="Center" Spacing="8">
+                        <Label Text="{Binding ParentName}" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                        <Label Text="{Binding ParentPhoneNumber}" FontSize="16" TextColor="White" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Students List -->
+            <Border Stroke="White" StrokeShape="RoundRectangle 50,0,0,0"  Padding="16" HeightRequest="800" BackgroundColor="White">
+                <CollectionView ItemsSource="{Binding Students}" ItemsLayout="HorizontalList" Margin="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:StudentModel">
+                            <Border BackgroundColor="#4A46AA" StrokeShape="RoundRectangle 16" Padding="10" Margin="10,0"
+                                    VerticalOptions="Start" HorizontalOptions="Center" >
+                                <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                                    <Image Source="{Binding Image, FallbackValue='defaultimage.png'}" WidthRequest="80" HeightRequest="80" Clip="Ellipse" Aspect="AspectFill" />
+                                    <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" />
+                                    <Label HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Class - " FontSize="18" TextColor="White" />
+                                                <Span Text="{Binding ClassName}" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding SectionName}" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </VerticalStackLayout>
+
+                                <!-- Navigation Command -->
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer 
+    Command="{Binding BindingContext.NavigateToAcademicCommand, Source={x:Reference HomePageRoot}}" 
+    CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,155 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:StudentTaskTechVegas.ViewModels"
+             x:Class="StudentTaskTechVegas.Views.ProfilePage"
+             x:DataType="viewmodels:ProfileViewModel"
+              NavigationPage.HasNavigationBar="False"
+             Title="Parent Profile"
+             BackgroundColor="#FFFFFF">
+    <Grid RowDefinitions="Auto,*,Auto" BackgroundColor="#4A46AA">
+
+        <!-- Header -->
+        <StackLayout BackgroundColor="#4A46AA" Padding="0,50,0,20">
+            <Label Text="Profile"
+             FontSize="22"
+             FontAttributes="Bold"
+             TextColor="White"
+             HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <!-- Body -->
+        <Border Grid.Row="1" Stroke="White" StrokeShape="RoundRectangle 50,0,0,0"   BackgroundColor="White">
+
+
+            <ScrollView>
+                <VerticalStackLayout Padding="20" Spacing="20">
+                    <Label Text="Parent Profile"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#333"
+                   HorizontalOptions="Center"/>
+
+                    <Frame CornerRadius="20"
+                   BorderColor="#DDDDDD"
+                   BackgroundColor="#FAFAFA"
+                   HasShadow="True"
+                   Padding="20">
+
+                        <VerticalStackLayout Spacing="12">
+                            <!-- Father's Details -->
+                            <Label Text="Father's Details" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Name: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.FName}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Education: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.FEducation}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Occupation: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.FOccupation}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Phone: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.FPhoneNumber}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Email: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.FEmailAddress}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Address: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.ResidenceAddress}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <!-- Divider -->
+                            <BoxView HeightRequest="1" Color="#CCCCCC" Margin="0,10"/>
+
+                            <!-- Mother's Details -->
+                            <!-- Mother's Details -->
+                            <Label Text="Mother's Details" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Name: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.MName}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Education: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.MEducation}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Occupation: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.MOccupation}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Phone: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.MPhoneNumber}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Email: " FontAttributes="Bold" TextColor="#555"/>
+                                        <Span Text="{Binding Profile.MEmailAddress}" TextColor="#222"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+
+</ContentPage>

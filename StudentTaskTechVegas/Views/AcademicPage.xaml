@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentTaskTechVegas.Views.AcademicPage"
+             xmlns:models="clr-namespace:StudentTaskTechVegas.Models"
+             x:DataType="models:StudentModel"
+             Title="Academics"
+             Shell.NavBarIsVisible="True"
+             BackgroundColor="#4A46AA">
+    <Grid RowDefinitions="Auto,*,Auto" BackgroundColor="#4A46AA">
+        <ScrollView>
+            <VerticalStackLayout Spacing="16">
+                <Image Source="{Binding Iage, FallbackValue='defaultimage.png'}" WidthRequest="100" HeightRequest="100" 
+                   Clip="Ellipse" HorizontalOptions="Center" />
+                <Label Text="{Binding Name}" FontSize="24" TextColor="White" 
+                   HorizontalOptions="Center" FontAttributes="Bold" />
+                <Label FontSize="14" TextColor="White" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Class - " FontSize="24" TextColor="White" />
+                            <Span Text="{Binding ClassName}" FontAttributes="Bold" FontSize="24" TextColor="White" />
+                            <Span Text=" " />
+                            <Span Text="{Binding SectionName}" FontAttributes="Bold"  FontSize="24" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!-- Academic Features Grid -->
+                <Frame BackgroundColor="White" CornerRadius="30" Padding="20" HasShadow="True" HeightRequest="800">
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="20" ColumnSpacing="20">
+
+                        <!-- Row 1 -->
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                            <Image Source="newicon.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Time Table" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                            <Image Source="homework.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Homework" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center">
+                            <Image Source="newicon.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Planner" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Row 2 -->
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Center">
+                            <Image Source="library.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Circular" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
+                            <Image Source="pay.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Fees" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="2" HorizontalOptions="Center">
+                            <Image Source="receipt.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Receipts" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Row 3 -->
+                        <VerticalStackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="Center">
+                            <Image Source="report.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Attendance" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="Center">
+                            <Image Source="library.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Library" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="2" Grid.Column="2" HorizontalOptions="Center">
+                            <Image Source="report.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Report Card" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Row 4 -->
+                        <VerticalStackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="Center">
+                            <Image Source="mycalend.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Exam" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="Center">
+                            <Image Source="newicon.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Medical" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="3" Grid.Column="2" HorizontalOptions="Center">
+                            <Image Source="receipt.png" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Transport" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

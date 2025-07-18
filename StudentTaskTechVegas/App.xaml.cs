@@ -1,15 +1,31 @@
-﻿namespace StudentTaskTechVegas
+﻿using Microsoft.Extensions.DependencyInjection;
+using StudentTaskTechVegas.Views;
+
+namespace StudentTaskTechVegas
 {
     public partial class App : Application
     {
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+
+            UserAppTheme = AppTheme.Light;
+
+            MainPage = CheckLogin(serviceProvider);
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
+        private Page CheckLogin(IServiceProvider serviceProvider)
         {
-            return new Window(new AppShell());
+            var token = SecureStorage.GetAsync("Token").Result;
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                return serviceProvider.GetRequiredService<HomePage>();
+            }
+            else
+            {
+                return serviceProvider.GetRequiredService<LoginPage>(); 
+            }
         }
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StudentTaskTechVegas.ViewModels"
+             x:Class="StudentTaskTechVegas.Views.LoginPage"
+              NavigationPage.HasNavigationBar="False"
+             
+             x:DataType="vm:LoginViewModel"
+             BackgroundColor="#403C99">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
+            <Label Text="Sign in to"
+                   FontSize="24"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start" />
+
+            <Label Text="Carmel Academy"
+                   FontSize="32"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start" />
+
+            <Label Text="Login to your account using your mobile number and password."
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Start" />
+
+            <BoxView HeightRequest="2" WidthRequest="100" Color="#00BFFF" HorizontalOptions="Start" />
+
+            <Frame BackgroundColor="White" CornerRadius="20" Padding="20" Margin="0,20,0,0" HasShadow="True">
+                <VerticalStackLayout Spacing="20">
+                    <Label Text="Phone Number:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="Enter Phone Number"
+                           Keyboard="Telephone" TextColor="Black"
+                           Text="{Binding PhoneNumber}"
+                           BackgroundColor="#f2f2f2"
+                           HeightRequest="50"
+                       />
+
+                    <Label Text="Password:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="************"
+                           IsPassword="True" TextColor="Black"
+                           Text="{Binding Password}"
+                           BackgroundColor="#f2f2f2"
+                           HeightRequest="50"
+                          />
+
+                    <Button Text="Sign In"
+                            Command="{Binding LoginCommand}"
+                            BackgroundColor="#403C99"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="50"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Crafted with ❤️ by Techvegas LLP"
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,16,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

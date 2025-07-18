@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentTaskTechVegas.Views.FeedBackPage"
+              NavigationPage.HasNavigationBar="False"
+             
+             Title="FeedBackPage">
+    <Grid RowDefinitions="Auto,*,Auto" BackgroundColor="#4A46AA">
+
+        <!-- Header -->
+        <StackLayout BackgroundColor="#4A46AA" Padding="0,50,0,20">
+            <Label Text="FeedBack News"
+               FontSize="22"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <!-- Body -->
+        <Border Grid.Row="1" Stroke="White" StrokeShape="RoundRectangle 50,0,0,0"  Padding="16"  BackgroundColor="White">
+        <StackLayout 
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center">
+            <Label Text="No Feedback Available"
+               FontSize="18"
+               TextColor="#4A46AA"
+               HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>
